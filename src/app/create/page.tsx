@@ -1,6 +1,9 @@
 'use client';
+
 import { useForm, SubmitHandler } from 'react-hook-form';
-import type { FormDataTypes, FormHandlerType } from '../../lib/types/FormData';
+import type { FormDataTypes } from '../../lib/types/FormData';
+import { insertEvent } from '../../util/actions/insertEvent';
+import { useEffect } from 'react';
 
 export default function Component() {
   const {
@@ -10,9 +13,12 @@ export default function Component() {
     formState: { errors },
   } = useForm<FormDataTypes>();
 
-  const onSubmit: SubmitHandler<FormDataTypes> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<FormDataTypes> = (formData) => {
+    console.log(formData);
+    insertEvent(formData);
+  };
 
-  // console.log(watch('title'));
+  console.log(process.env.NEXT_PUBLIC_HASURA_PROJECT_ENDPOINT);
 
   return (
     <div className='mt-32'>
