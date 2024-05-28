@@ -2,23 +2,25 @@
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import type { FormDataTypes } from '../../lib/types/FormData';
+import { ErrorMessage } from '@hookform/error-message';
 import { insertEvent } from '../../util/actions/insertEvent';
 import { useEffect } from 'react';
+import { getUser } from '@/util/getUser';
 
 export default function Component() {
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm<FormDataTypes>();
 
-  const onSubmit: SubmitHandler<FormDataTypes> = (formData) => {
-    console.log(formData);
+  const onSubmit: SubmitHandler<FormDataTypes> = async (formData) => {
+    formData.user = await getUser();
     insertEvent(formData);
+    reset();
   };
-
-  console.log(process.env.NEXT_PUBLIC_HASURA_PROJECT_ENDPOINT);
 
   return (
     <div className='mt-32'>
@@ -34,6 +36,13 @@ export default function Component() {
             placeholder='Enter a title'
             type='text'
           />
+          <p className='text-red-500 text-sm'>
+            <ErrorMessage
+              message='Title must be less than 80 characters'
+              errors={errors}
+              name='title'
+            />
+          </p>
         </div>
         <div>
           <label className='block text-sm font-medium text-gray-300' htmlFor='description'>
@@ -56,6 +65,13 @@ export default function Component() {
             placeholder='Enter an image URL'
             type='text'
           />
+          <p className='text-red-500 text-sm'>
+            <ErrorMessage
+              message='Image URL must start with http:// or https://'
+              errors={errors}
+              name='image_url'
+            />
+          </p>
         </div>
         <div>
           <label className='block text-sm font-medium text-gray-300' htmlFor='date'>
@@ -63,7 +79,7 @@ export default function Component() {
           </label>
           <input
             className='block w-full rounded-md bg-gray-700 shadow-sm p-1 focus:outline-none focus:ring focus:ring-gray-500'
-            {...register('date', { required: true, maxLength: 80 })}
+            {...register('date', { required: true })}
             type='date'
           />
         </div>
