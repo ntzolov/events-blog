@@ -13,6 +13,7 @@ export async function insertEvent(formData: FormDataTypes) {
           description: "${formData.description}"
           image_url: "${formData.image_url}"
           date: "${formData.date}"
+          user_id: "${formData.user}"
         }
       ) {
         id
