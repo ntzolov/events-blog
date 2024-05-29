@@ -1,9 +1,9 @@
 'use client';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
-import type { FormDataTypes } from '../../lib/types/FormData';
+import type { EventsDataTypes } from '../../types/EventDataTypes';
 import { ErrorMessage } from '@hookform/error-message';
-import { insertEvent } from '../../util/actions/insertEvent';
+import { insertEvent } from '../../lib/actions/events';
 import { useEffect } from 'react';
 import { getUser } from '@/util/getUser';
 
@@ -11,14 +11,13 @@ export default function Component() {
   const {
     register,
     handleSubmit,
-    watch,
     reset,
-    formState: { errors },
-  } = useForm<FormDataTypes>();
+    formState: { errors, isSubmitSuccessful },
+  } = useForm<EventsDataTypes>();
 
-  const onSubmit: SubmitHandler<FormDataTypes> = async (formData) => {
+  const onSubmit: SubmitHandler<EventsDataTypes> = async (formData) => {
     formData.user = await getUser();
-    insertEvent(formData);
+    const data = await insertEvent(formData);
     reset();
   };
 
@@ -85,11 +84,12 @@ export default function Component() {
         </div>
         <div>
           <button
-            className='inline-flex items-center justify-center rounded-md bg-emerald-700 px-4 py-2 text-sm font-medium text-slate-200 shadow transition-colors hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'
+            className='inline-flex items-center justify-center rounded-md bg-green-500 px-4 py-2 text-sm font-medium text-slate-200 shadow transition-colors hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'
             type='submit'>
             Submit
           </button>
         </div>
+        <p>{isSubmitSuccessful && 'Successfully created!'}</p>
       </form>
     </div>
   );
