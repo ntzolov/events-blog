@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Lato } from 'next/font/google';
 import './globals.css';
 import Nav from '@/components/Nav/Nav';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Lato({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
   title: 'Events-blog',
@@ -15,8 +15,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-
   return (
     <html lang='en' className='bg-gray-800 h-full w-full flex justify-center'>
       <body className={inter.className}>
