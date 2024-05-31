@@ -1,4 +1,3 @@
-import { useUser } from '@/context/userStore';
 import { getUser } from '../util/getUser';
 
 export default async function Home() {

@@ -1,8 +1,10 @@
 'use server'
 
-export async function getUser() {
-  const response = await fetch('https://api.ipify.org/?format=json');
-  const data = await response.json();
+import { headers } from "next/headers";
 
-  return data.ip;
+export async function getUser() {
+  const headersList = headers();
+  const user_id = headersList.get('x-forwarded-for') || '121.0.0.1';
+
+  return user_id;
 }

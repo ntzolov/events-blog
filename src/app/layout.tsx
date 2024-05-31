@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';
 import Nav from '@/components/Nav/Nav';
-import { headers } from 'next/headers';
 
 const inter = Lato({ subsets: ['latin'], weight: '400' });
 
@@ -16,10 +15,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = headers();
-  const ip = headersList.get('x-forwarded-for') || '121.0.0.1';
-  console.log(ip);
-
   return (
     <html lang='en' className='bg-gray-800 h-full w-full flex justify-center'>
       <body className={inter.className}>
