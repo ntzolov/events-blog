@@ -4,6 +4,7 @@ import { gql } from "@apollo/client";
 import { getClient } from "../getApolloClient";
 import type { EventsDataTypes } from "../../types/EventDataTypes";
 import { getUser } from "@/util/getUser";
+import { headers } from "next/headers";
 
 export async function insertEvent(formData: EventsDataTypes) {
   const INSERT_EVENT = gql`
@@ -73,7 +74,8 @@ export async function getEventByUserId() {
 }
 
 export async function addVisitor(event_id: string) {
-  const user_id = await getUser();
+  const headersList = headers();
+  const user_id = headersList.get('x-forwarded-for') || '121.0.0.1';
   const INSERT_VISITOR = gql`
   mutation INSERT_VISITOR {
     insert_visitors_one(object: {event_id: "${event_id}", user_id: "${user_id}"}) {
