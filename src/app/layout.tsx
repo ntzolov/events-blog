@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';
-// import Nav from '../components/nav/Nav';
+import Nav from '@/components/Nav';
 
 const inter = Lato({ subsets: ['latin'], weight: '400' });
 
@@ -18,7 +18,7 @@ export default async function RootLayout({
   return (
     <html lang='en' className='bg-gray-800 h-full w-full flex justify-center'>
       <body className={inter.className}>
-        {/* <Nav /> */}
+        <Nav />
         {children}
       </body>
     </html>
