@@ -50,6 +50,26 @@ export async function getAllEvents() {
   return { data };
 }
 
+export async function getEventById(event_id: string) {
+  const GET_ALL_EVENTS = gql`
+  query GET_EVENT_BY_ID {
+    events(where: {id: {_eq: "${event_id}"}}) {
+      title
+      description
+      image_url
+      user_id
+      id
+    }
+  }
+  `;
+
+  const { data } = await getClient().query({
+    query: GET_ALL_EVENTS,
+  });
+
+  return { data };
+}
+
 export async function getEventByUserId() {
   const user_id = await getUser();
   const GET_EVENT_BY_USER_ID = gql`
