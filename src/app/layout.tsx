@@ -18,7 +18,7 @@ export default async function RootLayout({
   return (
     <html lang='en' className='bg-gray-800 h-full w-full flex justify-center'>
       <body className={inter.className}>
-        <Nav />
+        {/* <Nav /> */}
         {children}
       </body>
     </html>
