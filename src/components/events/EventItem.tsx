@@ -2,14 +2,14 @@ import { EventsDataTypes } from '@/types/EventDataTypes';
 import { CardTitle, CardDescription, CardContent, Card } from '@/components/ui/card';
 import Image from 'next/image';
 import { SVGProps } from 'react';
-import MoreInfoButton from './MoreInfoButton';
-import JoinEventButton from './JoinEventButton';
+import MoreInfoButton from '../MoreInfoButton';
+import JoinEventButton from '../JoinEventButton';
 import { getUser } from '@/util/getUser';
 import { getAllVisitors } from '@/lib/actions/events';
 
 export const EventItem = async ({ event }: { event: EventsDataTypes }) => {
-  const user_id = await getUser();
-  const allVisitors = (await getAllVisitors(event.id as string)).data.visitors;
+  const user_id: string = await getUser();
+  const allVisitors: [] = (await getAllVisitors(event.id as string)).data.visitors;
   const isAlreadyJoined = allVisitors.some((v: any) => v.user_id === user_id);
 
   return (

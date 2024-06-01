@@ -1,5 +1,5 @@
-import type { EventsDataTypes } from '../types/EventDataTypes';
-import { EventItem } from './EventItem';
+import type { EventsDataTypes } from '../../types/EventDataTypes';
+import { EventItem } from '../events/EventItem';
 
 export default async function EventList({ events }: { events: EventsDataTypes[] }) {
   return (

@@ -1,4 +1,4 @@
-import EventList from '@/components/EventList';
+import EventList from '@/components/events/EventList';
 import { getAllEvents } from '@/lib/actions/events';
 
 export default async function AllEventsPage() {

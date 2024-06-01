@@ -10,10 +10,10 @@ export default function Nav() {
       <Link href={'/create'}>
         <NavButton>Create event</NavButton>
       </Link>
-      <Link href={'my-events'}>
+      <Link href={'/my-events'}>
         <NavButton>My events</NavButton>
       </Link>
-      <Link href={'all-events'}>
+      <Link href={'/all-events'}>
         <NavButton>All events</NavButton>
       </Link>
     </nav>
