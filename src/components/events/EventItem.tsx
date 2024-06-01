@@ -39,7 +39,7 @@ export const EventItem = async ({ event }: { event: EventsDataTypes }) => {
         </CardDescription>
         <div className='flex justify-between !mt-10'>
           <MoreInfoButton event={event} />
-          <JoinEventButton event={event} isAlreadyJoined={isAlreadyJoined} />
+          <JoinEventButton event={event} isAlreadyJoined={isAlreadyJoined} visitors={allVisitors} />
         </div>
       </CardContent>
     </Card>

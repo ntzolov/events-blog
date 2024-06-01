@@ -9,18 +9,22 @@ import { set } from 'react-hook-form';
 export default function JoinEventButton({
   event,
   isAlreadyJoined,
+  visitors,
 }: {
   event: EventsDataTypes;
   isAlreadyJoined: boolean;
+  visitors: string[];
 }) {
   const [isJoined, setIsJoined] = useState<boolean>(isAlreadyJoined);
 
   const onClickHandler = async () => {
     if (isJoined) {
       deleteVisitor(event.id as string);
+      // visitors.splice(visitors.indexOf(event.id as string), 1);
       setIsJoined(false);
     } else {
       addVisitor(event.id as string);
+      // visitors.push(event.id as string);
       setIsJoined(true);
     }
   };
