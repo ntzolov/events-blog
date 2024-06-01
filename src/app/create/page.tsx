@@ -4,8 +4,6 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import type { EventsDataTypes } from '../../types/EventDataTypes';
 import { ErrorMessage } from '@hookform/error-message';
 import { insertEvent } from '../../lib/actions/events';
-import { useEffect } from 'react';
-import { getUser } from '@/util/getUser';
 
 export default function Component() {
   const {
@@ -16,7 +14,7 @@ export default function Component() {
   } = useForm<EventsDataTypes>();
 
   const onSubmit: SubmitHandler<EventsDataTypes> = async (formData) => {
-    formData.user = await getUser();
+    console.log(formData);
     const data = await insertEvent(formData);
     reset();
   };
