@@ -3,7 +3,7 @@ import NavButton from './NavButton';
 
 export default function Nav() {
   return (
-    <nav className='w-full flex justify-center my-5 gap-3'>
+    <nav className='w-full flex justify-center my-5 gap-3 '>
       <Link href={'/'}>
         <NavButton>Home</NavButton>
       </Link>

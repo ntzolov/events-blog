@@ -16,7 +16,7 @@ export default async function EventPage({ params }: { params: { id: string } }) 
   const isAlreadyJoined = allVisitors.some((v: any) => v.user_id === user_id);
 
   return (
-    <div className='flex flex-col items-center text-gray-300 text-lg'>
+    <div className='flex flex-col items-center m-2 mt-10 text-gray-300 text-lg'>
       <Card className='w-full max-w-xl mb-5 relative bg-slate-700 rounded-lg shadow-lg hover:bg-slate-600 transition'>
         <BackButtonLocal />
         <Image
@@ -44,7 +44,11 @@ export default async function EventPage({ params }: { params: { id: string } }) 
           </CardDescription>
           <div className='flex justify-between !mt-10'>
             <BackButton />
-            <JoinEventButton event={event} isAlreadyJoined={isAlreadyJoined} />
+            <JoinEventButton
+              event={event}
+              isAlreadyJoined={isAlreadyJoined}
+              visitors={allVisitors}
+            />
           </div>
         </CardContent>
       </Card>
