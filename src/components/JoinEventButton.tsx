@@ -20,11 +20,9 @@ export default function JoinEventButton({
   const onClickHandler = async () => {
     if (isJoined) {
       deleteVisitor(event.id as string);
-      // visitors.splice(visitors.indexOf(event.id as string), 1);
       setIsJoined(false);
     } else {
       addVisitor(event.id as string);
-      // visitors.push(event.id as string);
       setIsJoined(true);
     }
   };
