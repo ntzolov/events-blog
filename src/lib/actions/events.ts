@@ -8,12 +8,13 @@ import { revalidatePath } from "next/cache";
 
 export async function insertEvent(formData: EventsDataTypes) {
   const user_id = await getUser();
+  const description = formData.description;
   const INSERT_EVENT = gql`
-    mutation INSERT_EVENT {
+    mutation INSERT_EVENT($description: String!) {
       insert_events_one(
         object: {
           title: "${formData.title}"
-          description: "${formData.description}"
+          description: $description
           image_url: "${formData.image_url}"
           date: "${formData.date}"
           user_id: "${user_id}"
@@ -26,6 +27,7 @@ export async function insertEvent(formData: EventsDataTypes) {
 
   const { data } = await getClient().mutate({
     mutation: INSERT_EVENT,
+    variables: { description },
   });
 
   revalidatePath('/');
