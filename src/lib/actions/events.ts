@@ -4,8 +4,10 @@ import { gql } from "@apollo/client";
 import { getClient } from "../getApolloClient";
 import type { EventsDataTypes } from "../../types/EventDataTypes";
 import { getUser } from "@/util/getUser";
+import { revalidatePath } from "next/cache";
 
 export async function insertEvent(formData: EventsDataTypes) {
+  const user_id = await getUser();
   const INSERT_EVENT = gql`
     mutation INSERT_EVENT {
       insert_events_one(
@@ -14,7 +16,7 @@ export async function insertEvent(formData: EventsDataTypes) {
           description: "${formData.description}"
           image_url: "${formData.image_url}"
           date: "${formData.date}"
-          user_id: "${formData.user}"
+          user_id: "${user_id}"
         }
       ) {
         id
@@ -26,6 +28,7 @@ export async function insertEvent(formData: EventsDataTypes) {
     mutation: INSERT_EVENT,
   });
 
+  revalidatePath('/');
   return { data };
 }
 
