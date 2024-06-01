@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';
-import Nav from '@/components/nav/Nav';
+import Nav from '../components/nav/Nav';
 
 const inter = Lato({ subsets: ['latin'], weight: '400' });
 
