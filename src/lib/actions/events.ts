@@ -113,6 +113,7 @@ export async function addVisitor(event_id: string) {
     mutation: INSERT_VISITOR,
   });
 
+  revalidatePath(`/event/${event_id}`)
   return { data };
 }
 
@@ -152,5 +153,6 @@ export async function deleteVisitor(event_id: string) {
     mutation: DELETE_VISITOR,
   });
 
+  revalidatePath(`/event/${event_id}`)
   return { data };
 }
