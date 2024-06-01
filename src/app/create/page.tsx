@@ -5,9 +5,10 @@ import type { EventsDataTypes } from '../../types/EventDataTypes';
 import { ErrorMessage } from '@hookform/error-message';
 import { insertEvent } from '../../lib/actions/events';
 import { useState } from 'react';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export default function Component() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -21,8 +22,7 @@ export default function Component() {
     const data = await insertEvent(formData);
     reset();
     setLoading(false);
-    console.log(data);
-    // redirect(`/event/${data.data.insert_events_one.id}`);
+    router.push(`/event/${data.data.insert_events_one.id}`);
   };
 
   return (
