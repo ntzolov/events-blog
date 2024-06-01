@@ -52,6 +52,7 @@ export async function getAllEvents() {
     query: GET_ALL_EVENTS,
   });
 
+  revalidatePath('/all-events');
   return { data };
 }
 
@@ -94,6 +95,7 @@ export async function getEventByUserId() {
     query: GET_EVENT_BY_USER_ID,
   });
 
+  revalidatePath('/my-events');
   return { data };
 }
 
