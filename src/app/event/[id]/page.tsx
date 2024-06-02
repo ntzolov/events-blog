@@ -44,11 +44,7 @@ export default async function EventPage({ params }: { params: { id: string } }) 
           </CardDescription>
           <div className='flex justify-between !mt-10'>
             <BackButton />
-            <JoinEventButton
-              event={event}
-              isAlreadyJoined={isAlreadyJoined}
-              visitors={allVisitors}
-            />
+            <JoinEventButton event={event} isAlreadyJoined={isAlreadyJoined} />
           </div>
         </CardContent>
       </Card>
