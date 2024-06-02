@@ -19,6 +19,7 @@ export const EventItem = async ({ event }: { event: EventsDataTypes }) => {
         className='rounded-t-lg object-cover w-full h-48'
         height={300}
         src={event.image_url || '/placeholder.svg'}
+        priority
         style={{
           aspectRatio: '500/300',
           objectFit: 'cover',
@@ -39,7 +40,7 @@ export const EventItem = async ({ event }: { event: EventsDataTypes }) => {
         </CardDescription>
         <div className='flex justify-between !mt-10'>
           <MoreInfoButton event={event} />
-          <JoinEventButton event={event} isAlreadyJoined={isAlreadyJoined} visitors={allVisitors} />
+          <JoinEventButton event={event} isAlreadyJoined={isAlreadyJoined} />
         </div>
       </CardContent>
     </Card>

@@ -13,7 +13,6 @@ export const { getClient } = registerApolloClient(() => {
         "x-hasura-admin-secret": adminSecret,
       },
     }),
-
   });
 });
 

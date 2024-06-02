@@ -1,19 +1,15 @@
 'use client';
 
-import { addVisitor, deleteVisitor, getAllVisitors } from '@/lib/actions/events';
+import { addVisitor, deleteVisitor } from '@/lib/actions/events';
 import { EventsDataTypes } from '@/types/EventDataTypes';
-import { getUser } from '@/util/getUser';
 import { useState } from 'react';
-import { set } from 'react-hook-form';
 
 export default function JoinEventButton({
   event,
   isAlreadyJoined,
-  visitors,
 }: {
   event: EventsDataTypes;
   isAlreadyJoined: boolean;
-  visitors: string[];
 }) {
   const [isJoined, setIsJoined] = useState<boolean>(isAlreadyJoined);
 

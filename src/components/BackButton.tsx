@@ -1,6 +1,5 @@
 'use client';
 
-import { EventsDataTypes } from '@/types/EventDataTypes';
 import { useRouter } from 'next/navigation';
 
 export default function BackButton() {

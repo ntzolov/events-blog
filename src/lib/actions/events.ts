@@ -30,7 +30,7 @@ export async function insertEvent(formData: EventsDataTypes) {
     variables: { description },
   });
 
-  revalidatePath('/');
+  revalidatePath('/', 'layout');
   return { data };
 }
 
